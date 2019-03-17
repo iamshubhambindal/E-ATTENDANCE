@@ -20,7 +20,7 @@
         tools:layout_editor_absoluteY="42dp" />
 
     <EditText
-        android:id="@+id/FacultyId"
+        android:id="@+id/Facultyemail"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentStart="true"
@@ -30,19 +30,19 @@
         android:layout_marginTop="142dp"
         android:layout_marginEnd="0dp"
         android:ems="10"
-        android:hint="@string/faculty1"
-        android:inputType="textPersonName"
+        android:hint="Faculty E-mail"
+        android:inputType="textEmailAddress"
         android:textSize="20sp" />
 
     <EditText
         android:id="@+id/editText3"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_below="@+id/Facultyemail"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="209dp"
+        android:layout_marginTop="7dp"
         android:layout_marginEnd="0dp"
         android:ems="10"
         android:hint="@string/faculty_password"
@@ -52,13 +52,27 @@
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="58dp"
+        android:layout_below="@+id/facultytype1"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="114dp"
-        android:layout_marginTop="291dp"
-        android:layout_marginEnd="112dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="87dp"
+        android:layout_marginEnd="110dp"
+        android:text="@string/faculty_login1"
         android:textColor="#006699"
-        android:textSize="20sp"
-        android:text="@string/faculty_login1" />
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/facultytype1"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/editText3"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="0dp"
+        android:ems="10"
+        android:hint="TYPE"
+        android:inputType="textCapCharacters|textPersonName" />
 </RelativeLayout>

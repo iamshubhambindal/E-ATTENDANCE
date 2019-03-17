@@ -26,7 +26,9 @@
             android:label="@string/title_activity_admin"
             android:theme="@style/AppTheme" />
         <activity android:name=".create_student" />
-        <activity android:name=".create_faculty"></activity>
+        <activity android:name=".create_faculty" />
+        <activity android:name=".Students" />
+        <activity android:name=".FacultyPage"></activity>
     </application>
 
 </manifest>

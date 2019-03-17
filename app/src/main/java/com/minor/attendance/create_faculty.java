@@ -23,7 +23,7 @@ import com.minor.attendance.Models.Faculty;
 public class create_faculty extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
-    EditText email1,password1,name,facultyid;
+    EditText email1,password1,name,facultytype;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +32,7 @@ public class create_faculty extends AppCompatActivity {
         email1=(EditText)findViewById(R.id.editText11);
         name=(EditText)findViewById(R.id.editText5);
         password1=(EditText)findViewById(R.id.editText6);
-        facultyid=(EditText)findViewById(R.id.editText9);
+        facultytype=(EditText)findViewById(R.id.facultytype);
         mAuth = FirebaseAuth.getInstance();
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,14 +45,14 @@ public class create_faculty extends AppCompatActivity {
                                     // Sign in success, update UI with the signed-in user's information
 
 // ...
-                                    mDatabase = FirebaseDatabase.getInstance().getReference();
+                                    mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
 
-                                    Faculty faculty=new Faculty(name.getText().toString(),email1.getText().toString());
+                                    Faculty faculty=new Faculty(name.getText().toString(),email1.getText().toString(),facultytype.getText().toString());
                                     Log.e("Create Faculty", "onComplete: "+faculty.name);
                                     Toast.makeText(create_faculty.this, "Authentication Successful.",
                                             Toast.LENGTH_SHORT).show();
 
-                                    mDatabase.child("faculties").child(facultyid.getText().toString()).setValue(faculty);
+                                    mDatabase.child("faculties").child(task.getResult().getUser().getUid()).setValue(faculty);
 
                                 } else {
                                     // If sign in fails, display a message to the user.

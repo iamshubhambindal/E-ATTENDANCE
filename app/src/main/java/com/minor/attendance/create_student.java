@@ -22,7 +22,7 @@ import com.minor.attendance.Models.student;
 public class create_student extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
-    EditText email2,password2,name,studentid;
+    EditText email2,password2,name,studentid,studentype;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +33,7 @@ public class create_student extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         name =(EditText)findViewById(R.id.editText7);
         studentid =(EditText)findViewById(R.id.editText10);
+        studentype = (EditText)findViewById(R.id.studentype);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,13 +44,15 @@ public class create_student extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
-                                    mDatabase = FirebaseDatabase.getInstance().getReference();
 
-                                    student student1=new student(name.getText().toString(),email2.getText().toString());
+                                    mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+
+
+                                    student student1=new student(name.getText().toString(),email2.getText().toString(),studentype.getText().toString());
                                     Log.e("Create Student", "onComplete: "+student1.name);
                                     Toast.makeText(create_student.this, "Authentication Successful.",
                                             Toast.LENGTH_SHORT).show();
-                                    mDatabase.child("students").child(studentid.getText().toString()).setValue(student1);
+                                    mDatabase.child("students").child(task.getResult().getUser().getUid()).setValue(student1);
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Log.w("create student activity", "createUserWithEmail:failure", task.getException());
